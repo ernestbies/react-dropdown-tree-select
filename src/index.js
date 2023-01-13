@@ -50,6 +50,7 @@ class DropdownTreeSelect extends Component {
     inlineSearchInput: PropTypes.bool,
     tabIndex: PropTypes.number,
     disablePoppingOnBackspace: PropTypes.bool,
+    showTags: PropTypes.bool
   }
 
   static defaultProps = {
@@ -62,6 +63,7 @@ class DropdownTreeSelect extends Component {
     inlineSearchInput: false,
     tabIndex: 0,
     disablePoppingOnBackspace: false,
+    showTags: true,
   }
 
   constructor(props) {
@@ -299,7 +301,7 @@ class DropdownTreeSelect extends Component {
   }
 
   render() {
-    const { disabled, readOnly, mode, texts, inlineSearchInput, tabIndex } = this.props
+    const { disabled, readOnly, mode, texts, inlineSearchInput, tabIndex, showTags } = this.props
     const { showDropdown, currentFocus, tags } = this.state
 
     const activeDescendant = currentFocus ? `${currentFocus}_li` : undefined
@@ -334,7 +336,7 @@ class DropdownTreeSelect extends Component {
             .filter(Boolean)
             .join(' ')}
         >
-          <Trigger
+          {showTags && <Trigger
             onTrigger={this.onTrigger}
             showDropdown={showDropdown}
             {...commonProps}
@@ -344,7 +346,7 @@ class DropdownTreeSelect extends Component {
             <Tags tags={tags} onTagRemove={this.onTagRemove} {...commonProps}>
               {!inlineSearchInput && searchInput}
             </Tags>
-          </Trigger>
+          </Trigger>}
           {showDropdown && (
             <div className="dropdown-content" {...this.getAriaAttributes()}>
               {inlineSearchInput && searchInput}
