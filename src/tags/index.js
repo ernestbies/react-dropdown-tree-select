@@ -34,15 +34,16 @@ class Tags extends PureComponent {
     disabled: PropTypes.bool,
     texts: PropTypes.object,
     children: PropTypes.node,
+    showTags: PropTypes.bool,
   }
 
   render() {
-    const { tags, onTagRemove, texts = {}, disabled, readOnly, children } = this.props
+    const { tags, onTagRemove, texts = {}, disabled, readOnly, children, showTags } = this.props
     const lastItem = children || <span className="placeholder">{texts.placeholder || 'Choose...'}</span>
 
     return (
       <ul className="tag-list">
-        {getTags(tags, onTagRemove, readOnly, disabled, texts.labelRemove)}
+        {showTags && getTags(tags, onTagRemove, readOnly, disabled, texts.labelRemove)}
         <li className="tag-item">{lastItem}</li>
       </ul>
     )

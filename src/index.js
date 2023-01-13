@@ -50,7 +50,7 @@ class DropdownTreeSelect extends Component {
     inlineSearchInput: PropTypes.bool,
     tabIndex: PropTypes.number,
     disablePoppingOnBackspace: PropTypes.bool,
-    showTags: PropTypes.bool
+    showTags: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -336,17 +336,17 @@ class DropdownTreeSelect extends Component {
             .filter(Boolean)
             .join(' ')}
         >
-          {showTags && <Trigger
+          <Trigger
             onTrigger={this.onTrigger}
             showDropdown={showDropdown}
             {...commonProps}
             tags={tags}
             tabIndex={tabIndex}
           >
-            <Tags tags={tags} onTagRemove={this.onTagRemove} {...commonProps}>
+            <Tags showTags={showTags} tags={tags} onTagRemove={this.onTagRemove} {...commonProps}>
               {!inlineSearchInput && searchInput}
             </Tags>
-          </Trigger>}
+          </Trigger>
           {showDropdown && (
             <div className="dropdown-content" {...this.getAriaAttributes()}>
               {inlineSearchInput && searchInput}
