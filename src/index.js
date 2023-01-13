@@ -108,7 +108,7 @@ class DropdownTreeSelect extends Component {
     }
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.initNewProps(this.props)
   }
 
@@ -116,7 +116,7 @@ class DropdownTreeSelect extends Component {
     document.removeEventListener('click', this.handleOutsideClick, false)
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     this.initNewProps(nextProps)
   }
 
