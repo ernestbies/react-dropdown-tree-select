@@ -149,6 +149,7 @@ class Tree extends Component {
             hasMore={this.hasMore()}
             loader={<span className="searchLoader">Loading...</span>}
             scrollableTarget={this.state.scrollableTarget}
+            style={{ maxHeight: '90vh' }}
           >
             {this.state.items}
           </InfiniteScroll>
